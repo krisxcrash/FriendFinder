@@ -31,7 +31,6 @@ app.post("/api/friends", function(req, res) {
             totalDifference += difference;
         }
         totalDifferences[i] = totalDifference;
-        
     }
     var lowestDifference = totalDifferences[0];
 
@@ -43,6 +42,5 @@ app.post("/api/friends", function(req, res) {
         }
     }
     res.json(newFriends[index]);
-
   }); 
 };
