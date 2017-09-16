@@ -47,7 +47,7 @@
 			<div class="panel-title"><h5 style="color: white">About You</h5></div>
 		</div>
 		<div class="panel-body panelFormat">
-			<form>
+			<form id="new-friend-form">
 			  <div class="form-group">
 			    <label for="userName">Name (Required)</label>
 			    <input type="text" class="form-control inputFormat" id="nameInput" placeholder="First Name">
@@ -220,7 +220,7 @@
 		  <img id="match-image" src="" alt=""></img>
 		</div>
 		<div class="modal-footer">
-		  <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-default btn-lg" data-dismiss="modal" id="close-btn">Close</button>
 		</div>
 	  </div>
   
@@ -249,7 +249,14 @@ $(".submit-btn").on("click", function(event) {
 			if ($(this).val() === "") {
 				isValid = false;
 			}
-		})
+		
+		});
+
+		$(".user-select").each(function() {
+			if ($(this).val() === "") {
+				isValid = false;
+			}
+		});
 		return isValid;
 	}
 
@@ -260,15 +267,13 @@ $(".submit-btn").on("click", function(event) {
 			scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(),$("#q8").val(), $("#q9").val(), $("#q10").val()]
 		};
 
-		console.log(newfriend);
-
-
 		//AJAX post the form data to the friends.js API 
-		$.post("/api/new", newfriend, 
+		$.post("/api/friends", newfriend, 
 			function(data) {
 				
 				$("#match-name").text(data.name);
-				$("match-image").attr("src", data.photo);
+				$("#match-image").attr("src", data.photo);
+				$("#match-image").attr("width", "300px");
 
 
 				$("#friends-results-modal").modal("toggle");
@@ -279,9 +284,14 @@ $(".submit-btn").on("click", function(event) {
 
 		alert("Please make sure all fields are filled out!")
 	}
-
+	
 	return false;
 
+});
+
+//clears form once close button clicked on modal
+$("#close-btn").on("click", function() {
+	$("#new-friend-form")[0].reset();
 });
 
 </script>

@@ -13,20 +13,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+// //Routes 
+// app.get("/", function(req, res) {
+//     res.sendFile(path.join(__dirname, "/app/public/home.html"));
+// });
 
-//Routes 
-
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "/app/public/home.html"));
-});
-
-app.get("/survey", function(req, res) {
-    res.sendFile(path.join(__dirname, "/app/public/survey.html"));
-});
+// app.get("/survey", function(req, res) {
+//     res.sendFile(path.join(__dirname, "/app/public/survey.html"));
+// });
 
 // //Router
 require(path.join(__dirname, "/app/routing/apiRoutes"))(app);
-//require("/app/routing/htmlRoutes")(app);
+require(path.join(__dirname, "/app/routing/htmlRoutes"))(app);
 
 
 // Listener
