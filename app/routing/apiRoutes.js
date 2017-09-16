@@ -15,10 +15,12 @@ app.post("/api/friends", function(req, res) {
     var index = 0;
     var myScores = req.body.scores;
 
+    // loops through new friends to check difference in answers
     for (var i = 0; i < newFriends.length; i++) {
         var totalDifference = 0;
         var friendScores = newFriends[i].scores;
-
+        
+        //loops through the scores and their differences to make sure returns positive numbers
         for (var j = 0; j < friendScores.length && j < myScores.length; j++) {
             var friendScore = friendScores[j];
             var myScore = myScores[j];
@@ -32,6 +34,8 @@ app.post("/api/friends", function(req, res) {
         
     }
     var lowestDifference = totalDifferences[0];
+
+    //loops through differences and returns best result
     for (var k = 0; k < totalDifferences.length; k++) {
         if (totalDifferences[k] < lowestDifference) {
             lowestDifference = totalDifferences[k];
@@ -40,16 +44,5 @@ app.post("/api/friends", function(req, res) {
     }
     res.json(newFriends[index]);
 
-
-
-
-
-
-    // var newfriend = req.body;
-    // newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
-  
-    // newFriends.push(newfriend);
-  
-    // res.json(newfriend);
   }); 
 };
