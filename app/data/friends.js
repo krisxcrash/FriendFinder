@@ -1,4 +1,4 @@
-// Friendly matches
+// Data
 
 var newFriends = [{
     "name": "Frank",
@@ -92,6 +92,6 @@ var newFriends = [{
     ]
 }];
 
-//exports the array
+//exports the array to other files
 
 module.exports = newFriends;

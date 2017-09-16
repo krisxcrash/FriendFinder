@@ -1,7 +1,10 @@
+//Loads data
 var newFriends = require("../data/friends.js");
 
+//Routing
 module.exports = function(app) {
 
+    //API GET request
     app.get("/api/friends", function(req, res) {
         res.json(newFriends);
     });

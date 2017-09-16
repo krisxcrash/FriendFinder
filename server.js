@@ -1,5 +1,4 @@
 //Dependencies
-
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
@@ -25,8 +24,12 @@ app.get("/survey", function(req, res) {
     res.sendFile(path.join(__dirname, "survey.html"));
 });
 
+//Router
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
-// Starts the server to begin listening
+
+// Listener
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
