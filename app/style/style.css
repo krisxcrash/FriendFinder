@@ -1,6 +1,9 @@
+.banner {
+    background: #fff !important;
+};
+
 #match-name, 
 #match-image {
     text-align: center;
     align-content: center;
-}
-
+};
